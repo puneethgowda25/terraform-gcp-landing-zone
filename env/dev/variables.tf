@@ -22,7 +22,6 @@ variable "subnet_configs" {
 }
 
 # VM variables
-
 variable "vm_name_prefix" {
   type = string
 }
@@ -39,7 +38,7 @@ variable "vm_target_size" {
   type = number
 }
 
-# firwall variables
+# Firewall variables: public HTTP
 variable "firewall_name" {
   type = string
 }
@@ -56,3 +55,35 @@ variable "firewall_target_tags" {
   type = list(string)
 }
 
+# Firewall variables: GCP Health Checks
+variable "firewall_hc_name" {
+  type = string
+}
+
+variable "firewall_hc_ports" {
+  type = list(string)
+}
+
+variable "firewall_hc_source_ranges" {
+  type = list(string)
+}
+
+variable "firewall_hc_target_tags" {
+  type = list(string)
+}
+
+# Load balancer variables
+variable "lb_name" {
+  type = string
+}
+
+variable "lb_port" {
+  type    = number
+  default = 80
+}
+
+# Link to MIG instance group
+variable "lb_instance_group" {
+  type        = string
+  description = "Self-link of the Managed Instance Group (MIG) to attach the LB backend"
+}

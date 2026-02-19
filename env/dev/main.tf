@@ -31,3 +31,22 @@ module "vm" {
   target_size           = var.vm_target_size
   startup_script        = file("${path.module}/scripts/startup.sh")
 }
+
+module "lb" {
+  source         = "../../modules/load-balancer"
+  project_id     = var.project_id
+  name           = var.lb_name
+  instance_group = module.vm.mig_id 
+  port           = var.lb_port
+}
+
+module "allow_healthcheck" {
+  source        = "../../modules/firewall"
+  name          = var.firewall_hc_name
+  project_id    = var.project_id
+  network       = module.network.network_name
+  protocol      = "tcp"
+  ports         = var.firewall_hc_ports
+  source_ranges = var.firewall_hc_source_ranges
+  target_tags   = var.firewall_hc_target_tags
+}
