@@ -1,0 +1,10 @@
+variable "project_id" { type = string }
+variable "name_prefix" { type = string }
+variable "machine_type" { type = string }
+variable "image" { type = string }
+variable "network" { type = string }
+variable "subnetwork" { type = string }
+variable "service_account_email" { type = string }
+variable "tags" { type = list(string) }
+variable "region" { type = string }
+variable "target_size" { type = number }
