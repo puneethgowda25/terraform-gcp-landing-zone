@@ -8,3 +8,8 @@ variable "service_account_email" { type = string }
 variable "tags" { type = list(string) }
 variable "region" { type = string }
 variable "target_size" { type = number }
+variable "startup_script" {
+  type        = string
+  description = "Startup script for VM"
+}
+

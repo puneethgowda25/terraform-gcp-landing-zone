@@ -16,9 +16,10 @@ resource "google_compute_instance_template" "template" {
   network_interface {
     network    = var.network
     subnetwork = var.subnetwork
-
     access_config {}
   }
+
+  metadata_startup_script = var.startup_script
 
   service_account {
     email  = var.service_account_email
@@ -27,6 +28,7 @@ resource "google_compute_instance_template" "template" {
 
   tags = var.tags
 }
+
 
 #################################################
 # Managed Instance Group (Regional)
