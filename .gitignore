@@ -5,7 +5,7 @@
 crash.log
 override.tf
 override.tf.json
-*.tfvars
+# *.tfvars
 *.tfvars.json
 
 # Terraform lock file (optional - usually commit this)
